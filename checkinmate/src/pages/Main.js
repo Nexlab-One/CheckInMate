@@ -16,12 +16,12 @@ function Main() {
         </div>
 
         <div className="text-center">
-          <a href="/checkin" className="btn-get-started scrollto">
+          <a href="/checkin" className="btn btn-get-started scrollto">
             Yes, Continue
           </a>
         </div>
         <div className="text-center">
-          <a href="/register" className="btn-get-started scrollto">
+          <a href="/register" className="btn btn-get-started scrollto">
             I don't have one
           </a>
         </div>
