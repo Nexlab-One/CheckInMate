@@ -3,11 +3,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 //convert the request data to json
-app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
+app.use(bodyParser.json());
+
 mongoose
   .connect("mongodb://localhost/project", {
     useNewUrlParser: true,
