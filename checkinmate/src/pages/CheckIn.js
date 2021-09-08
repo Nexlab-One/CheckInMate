@@ -1,6 +1,8 @@
 import React from "react";
+import { findUser } from "../services/user";
 
 function CheckIn({ message = localStorage.getItem("id") }) {
+  const showID = React.useRef();
   return (
     <>
       <section className="breadcrumbs">
@@ -17,23 +19,31 @@ function CheckIn({ message = localStorage.getItem("id") }) {
         </div>
       </section>
 
-      <section class="inner-page">
-        <div class="container">
-          <form>
-            <div class="form-group">
-              <label>User ID</label>
+      <section className="inner-page">
+        <div className="container">
+          <div className="form-group">
+            <label>User ID</label>
 
-              <input
-                type="text"
-                className="form-control"
-                value={message !== "undefined" && message}
-              />
-            </div>
-            <br />
-            <div className="form-group">
-              <button className="btn btn-primary">Proceed</button>
-            </div>
-          </form>
+            <input
+              ref={showID}
+              type="text"
+              className="form-control"
+              value={message !== "undefined" && message}
+            />
+          </div>
+          <br />
+          <div className="form-group">
+            <button
+              className="btn btn-primary"
+              onClick={async () => {
+                const user = await findUser(showID.current.value);
+                localStorage.setItem("user", JSON.stringify(user));
+                window.open("/userDetail");
+              }}
+            >
+              Proceed
+            </button>
+          </div>
         </div>
       </section>
     </>
