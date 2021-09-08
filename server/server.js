@@ -47,7 +47,15 @@ app.post("/register", async function (req, res) {
 });
 
 app.put("/findUser", async (req, res) => {
-  const user = await User.findOne({ showID: req.body.showID });
+  let user = await User.findOne({ showID: req.body.showID });
+  if (!user)
+    user = {
+      firstName: "Error, This Does Not Exist",
+      lastName: "Error, This Does Not Exist",
+      contact: 0,
+      showID: "Error, This Does Not Exist",
+      error: true,
+    };
   res.send(user);
 });
 

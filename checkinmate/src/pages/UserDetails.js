@@ -42,7 +42,7 @@ function UserDetails({ user = JSON.parse(localStorage.getItem("user")) }) {
                       : "loading"}
                   </li>
                   <li>
-                    <strong>Phone Number date</strong>:{" "}
+                    <strong>Phone Number</strong>:{" "}
                     {user !== "undefined" ? user.contact : "loading"}
                   </li>
                 </ul>
@@ -50,7 +50,10 @@ function UserDetails({ user = JSON.parse(localStorage.getItem("user")) }) {
             </div>
           </div>
           <div className="text-center">
-            <a href="/checkinsuccess" className="btn btn-get-started scrollto">
+            <a
+              href={`${user.error ? "/notExist" : "/checkinsuccess"}`}
+              className="btn btn-get-started scrollto"
+            >
               Yes, Continue
             </a>
           </div>
