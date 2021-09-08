@@ -40,8 +40,23 @@ app.post("/register", async function (req, res) {
   });
   await user.save();
   //mongodb will generate a unique id
-  res.send(user._id);
+  //res.send(user._id);
+  res.send(generateID());
 });
+
+//Generate User ID
+function generateID(){
+  var key = {
+    'i': 'w',
+    'l': 'x',
+    'o': 'y',
+    'u': 'z'
+};
+var randomInt = Math.floor(Math.random()*1e9);
+console.log(randomInt.toString(32).replace(/[ilou]/, function (a) { return key[a];}));
+return(randomInt.toString(32).replace(/[ilou]/, function (a) { return key[a];}))
+
+}
 
 //create the server in http://localhost:5000
 const port = process.env.PORT || 5000;
