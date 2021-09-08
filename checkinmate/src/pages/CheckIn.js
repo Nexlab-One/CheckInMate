@@ -1,38 +1,37 @@
 import React from "react";
 
-function CheckIn() {
+function CheckIn({ message = localStorage.getItem("id") }) {
   return (
     <>
-      {/* <section className="breadcrumbs">
+      <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <h2>Inner Page</h2>
-            <ul>
+            <h2>Enter User ID</h2>
+            <ol>
               <li>
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
-              <li>Inner Page</li>
-            </ul>
+              <li>Enter User ID</li>
+            </ol>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      <section className="inner-page">
-        <div className="container">
+      <section class="inner-page">
+        <div class="container">
           <form>
-            <div className="form-group">
-              <label for="text1">Text Field</label>
+            <div class="form-group">
+              <label>User ID</label>
+
               <input
-                id="text1"
-                name="text1"
                 type="text"
                 className="form-control"
+                value={message !== "undefined" && message}
               />
             </div>
+            <br />
             <div className="form-group">
-              <button name="submit" type="submit" className="btn btn-primary">
-                Submit
-              </button>
+              <button className="btn btn-primary">Proceed</button>
             </div>
           </form>
         </div>
