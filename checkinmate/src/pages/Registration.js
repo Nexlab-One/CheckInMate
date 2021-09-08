@@ -1,5 +1,5 @@
 import React from "react";
-import { register } from "../services/registeration";
+import { register } from "../services/registration";
 
 function Registration() {
   const firstRef = React.useRef();
