@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   contact: Number,
-  showID: String,
+  userID: String,
 });
 const User = mongoose.model("User", userSchema);
 
@@ -38,14 +38,14 @@ app.post("/register", async function (req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     contact: req.body.contact,
-    showID: "generateID()",
+    userID: "generateID()",
   });
   await user.save();
-  res.send(user.showID);
+  res.send(user.userID);
 });
 
 app.put("/findUser", async (req, res) => {
-  const user = await User.findOne({ showID: req.body.showID });
+  const user = await User.findOne({ userID: req.body.userID });
   res.send(user);
 });
 
