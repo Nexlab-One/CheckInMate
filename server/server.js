@@ -29,11 +29,27 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
+//For Store and Location Details
+const storeSchema = new mongoose.Schema({
+  storeName: String,
+  storeID: String,
+  location: Number
+});
+const Store = mongoose.model("Store", storeSchema);
+
+//Set Store Location
+app.post("/", async function (req, res) {
+  const store = new Store({
+    storeName: req.body.storeName,
+    storeID: "generateID()",
+    location: req.body.location,
+  });
+  await store.save();
+  res.send(store.storeID);
+});
+
 //http post method you can use app.delete, app.get, or app.post
 app.post("/register", async function (req, res) {
-  console.log("====================================");
-  console.log(req.body);
-  console.log("====================================");
   const user = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
