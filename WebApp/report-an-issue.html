@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>CheckInMate - Check In</title>
-    <meta content="" name="Check in with your ID here">
+    <meta content="" name="Report an Issue">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -77,10 +77,10 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Scan QR ID</h2>
+                    <h2>Report an issue</h2>
                     <ol>
                         <li><a href="index.html">Home</a></li>
-                        <li>Scan QR ID</li>
+                        <li>Report an issue</li>
                     </ol>
                 </div>
 
@@ -89,14 +89,32 @@
 
         <section class="inner-page">
             <div class="container">
-                <h1>QR Scanner Goes here</h1>
+                <form>
+                    <div class="form-group row">
+                      <label for="email" class="col-3 col-form-label">Email</label> 
+                      <div class="col-9">
+                        <input id="email" name="email" placeholder="example@email.com" type="text" class="form-control" aria-describedby="emailHelpBlock"> 
+                        <span id="emailHelpBlock" class="form-text text-muted">Enter a contact email if necessary</span>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="form-group row">
+                      <label for="textarea" class="col-3 co l-form-label">Issue Details</label> 
+                      <div class="col-9">
+                        <textarea id="textarea" name="textarea" cols="40" rows="5" class="form-control" required="required" aria-describedby="textareaHelpBlock"></textarea> 
+                        <span id="textareaHelpBlock" class="form-text text-muted">Describe any problems and issues found.</span>
+                      </div>
+                    </div> 
+                    <div class="form-group row">
+                      <div class="offset-3 col-9">
+                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </form>
                 
             </div>
             
         </section>
-        <div class="form-group text-center">
-            <button href="index.html" name="submit" type="" class="btn btn-primary">Check in Another way</button>
-        </div>
 
     </main><!-- End #main -->
 
