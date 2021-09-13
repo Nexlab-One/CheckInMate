@@ -25,6 +25,9 @@ function Main() {
             I don't have one
           </a>
         </div>
+        <div class="text-center">
+          <a href="/qr-check-in.html" class="btn-get-started scrollto">Check in with QR</a>
+        </div>
       </div>
     </section>
   );
