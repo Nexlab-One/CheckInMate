@@ -41,7 +41,7 @@ const Store = mongoose.model("Store", storeSchema);
 app.post("/registerStore", async function (req, res) {
   const store = new Store({
     storeName: req.body.storeName,
-    storeID: "generateID()",
+    storeID: generateID(),
     location: req.body.location,
   });
   await store.save();
@@ -54,7 +54,7 @@ app.post("/register", async function (req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     contact: req.body.contact,
-    userID: "generateID()",
+    userID: generateID(),
   });
   await user.save();
   res.send(user.userID);
