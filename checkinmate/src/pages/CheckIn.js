@@ -1,8 +1,13 @@
 import React from "react";
 import { findUser } from "../services/user";
+import { FormControl } from "react-bootstrap";
 
 function CheckIn({ message = localStorage.getItem("id") }) {
   const showID = React.useRef();
+
+  const [content, setContent] = React.useState(
+    message !== "undefined" && message
+  );
   return (
     <>
       <section className="breadcrumbs">
@@ -24,12 +29,14 @@ function CheckIn({ message = localStorage.getItem("id") }) {
           <div className="form-group">
             <label>User ID</label>
 
-            <input
+            <FormControl
               ref={showID}
               type="text"
-              className="form-control"
-              value={message !== "undefined" && message}
-            />
+              value={content}
+              onChange={(e) => {
+                setContent(e.target.value);
+              }}
+            ></FormControl>
           </div>
           <br />
           <div className="form-group">
@@ -39,6 +46,12 @@ function CheckIn({ message = localStorage.getItem("id") }) {
                 const user = await findUser(showID.current.value);
                 localStorage.setItem("user", JSON.stringify(user));
                 window.open("/userDetail");
+                if (user.error) {
+                  localStorage.setItem(
+                    "error",
+                    `This user ID ${showID.current.value} does nor exist`
+                  );
+                }
               }}
             >
               Proceed
