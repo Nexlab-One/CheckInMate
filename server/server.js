@@ -38,11 +38,9 @@ app.post("/register", async function (req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     contact: req.body.contact,
-    showID: generateID(),
+    showID: "generateID()",
   });
   await user.save();
-  //mongodb will generate a unique id
-  //res.send(user._id);
   res.send(user.showID);
 });
 
