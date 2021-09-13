@@ -10,6 +10,7 @@ import Success from "./pages/Success";
 import UserDetails from "./pages/UserDetails";
 import CheckInSuccess from "./pages/CheckInSuccess";
 import NotExist from "./pages/NotExist";
+import QRReader from "./pages/QRReader";
 function App() {
   AOS.init({
     duration: 1000,
@@ -29,6 +30,7 @@ function App() {
           <Route path="/userDetail" component={UserDetails}></Route>
           <Route path="/checkinsuccess" component={CheckInSuccess}></Route>
           <Route path="/notExist" component={NotExist} />
+          <Route path="/qrcode" component={QRReader}></Route>
         </Switch>
       </Router>
     </>

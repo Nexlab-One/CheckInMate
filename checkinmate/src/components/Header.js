@@ -9,9 +9,9 @@ function Header() {
             <a href="/">CheckInMate</a>
           </h1>
 
-          <a href="index.html" className="logo">
+          {/* <a href="index.html" className="logo">
             <img src="assets/img/logo.png" alt="" className="img-fluid" />
-          </a>
+          </a> */}
 
           <nav id="navbar" className="navbar">
             <ul>
