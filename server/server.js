@@ -38,7 +38,7 @@ const storeSchema = new mongoose.Schema({
 const Store = mongoose.model("Store", storeSchema);
 
 //Set Store Location
-app.post("/", async function (req, res) {
+app.post("/registerStore", async function (req, res) {
   const store = new Store({
     storeName: req.body.storeName,
     storeID: "generateID()",
