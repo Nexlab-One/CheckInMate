@@ -44,8 +44,6 @@ function QRReader() {
       </section>
       <section className="inner-page">
         <div className="container" id="qrScanner" style={{ display: scanner }}>
-          <h1>QR Scanner Goes here</h1>
-
           <QrReader
             delay={300}
             onError={handleError}
