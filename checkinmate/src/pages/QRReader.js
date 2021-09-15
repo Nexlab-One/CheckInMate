@@ -19,7 +19,7 @@ function QRReader() {
         onScan={handleScan}
         style={{ width: "50%", marginLeft: "25%" }}
       />
-      <p>{result}</p>
+      <p>Result: {result}</p>
     </div>
   );
 }
