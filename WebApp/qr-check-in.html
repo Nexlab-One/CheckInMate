@@ -125,21 +125,30 @@
 
     <script>
         function showHideSuccessQR() {
+            showHideSuccessMessage()
+            showHideQRScanner()
             setTimeout(function(){
-                var x = document.getElementById("checkInSuccess");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
-                    }
-                    
-                    var y = document.getElementById("qrScanner");
-                    if (y.style.display === "none") {
-                        y.style.display = "block";
-                    } else {
-                        y.style.display = "none";
-                    }
-        }, 3000);
+                showHideSuccessMessage()
+                showHideQRScanner()    
+        }, 2000);
+        }
+
+        function showHideSuccessMessage(){
+            var x = document.getElementById("checkInSuccess");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function showHideQRScanner(){
+            var y = document.getElementById("qrScanner");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+            } else {
+                y.style.display = "none";
+            }
         }
     </script>
 
