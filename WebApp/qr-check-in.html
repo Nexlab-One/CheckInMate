@@ -88,9 +88,15 @@
         </section><!-- End Breadcrumbs -->
 
         <section class="inner-page">
-            <div class="container">
+            <div id="qrScanner" class="container">
                 <h1>QR Scanner Goes here</h1>
                 
+            </div>
+            <button onclick="showHideSuccessQR()">Try it</button>
+            <div class="container">
+                <div id="checkInSuccess" class="alert alert-success row justify-content-center text-center" role="alert" style="display: none;">
+                    You have Checked in Successfully!
+                </div>
             </div>
             
         </section>
@@ -116,6 +122,26 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        function showHideSuccessQR() {
+            setTimeout(function(){
+                var x = document.getElementById("checkInSuccess");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                    
+                    var y = document.getElementById("qrScanner");
+                    if (y.style.display === "none") {
+                        y.style.display = "block";
+                    } else {
+                        y.style.display = "none";
+                    }
+        }, 3000);
+        }
+    </script>
 
 </body>
 
