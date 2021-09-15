@@ -33,9 +33,16 @@ const User = mongoose.model("User", userSchema);
 const storeSchema = new mongoose.Schema({
   storeName: String,
   storeID: String,
-  location: Number
+  location: Number,
 });
 const Store = mongoose.model("Store", storeSchema);
+
+const checkinSchema = new mongoose.Schema({
+  storeID: String,
+  userID: String,
+});
+
+const CheckIn = mongoose.model("CheckIn", checkinSchema);
 
 //Set Store Location
 app.post("/registerStore", async function (req, res) {
@@ -46,6 +53,24 @@ app.post("/registerStore", async function (req, res) {
   });
   await store.save();
   res.send(store.storeID);
+});
+
+app.put("/checkinlocation", async function (req, res) {
+  const store = await Store.find({ storeID: req.body.storeID });
+  if (!store) {
+    res.status(400).send("Store doesn't exist");
+  }
+  const user = await User.find({ userID: req.body.userID });
+
+  if (!user) {
+    res.status(400).send("User doesn't exist");
+  }
+  const checkin = new CheckIn({
+    storeID: req.body.storeID,
+    userID: req.body.userID,
+  });
+  await checkin.save();
+  res.send("Success");
 });
 
 //http post method you can use app.delete, app.get, or app.post

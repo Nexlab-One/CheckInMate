@@ -16,7 +16,7 @@ function Header() {
           <nav id="navbar" className="navbar">
             <ul>
               <li>
-                <a className="nav-link scrollto active" href="#hero">
+                <a className="nav-link scrollto active" href="/reportissue">
                   Report an issue
                 </a>
               </li>
@@ -64,7 +64,7 @@ function Header() {
                 </ul>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#contact">
+                <a className="nav-link scrollto" href="/setting">
                   Settings
                 </a>
               </li>
