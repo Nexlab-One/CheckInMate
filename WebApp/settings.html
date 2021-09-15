@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>CheckInMate</title>
-    <meta content="" name="Location check in application for contact tracing">
+    <title>CheckInMate - Check In</title>
+    <meta content="" name="Settings">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -27,9 +27,11 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
+
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
@@ -40,45 +42,78 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="report-an-issue.html">Report an issue</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Settings</a></li>
 
                     <li class="dropdown"><a href="#"><span>Statistics</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Checked In</a></li>
-                            <li><a href="#">Case Tracking</a></li>
-                            <li><a href="issues.html">Issues</a></li>
+                            <li><a href="#">Drop Down 2</a></li>
+                            <li><a href="#">Drop Down 3</a></li>
                             <li><a href="#">Drop Down 4</a></li>
+                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+                            </li>
+
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="settings.html">Settings</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Settings</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
+
         </div>
     </header><!-- End Header -->
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 text-center">
-                    <h1>Have an ID?</h1>
-                    <h2>Checking in, Made easy</h2>
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Report an issue</h2>
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Settings</li>
+                    </ol>
                 </div>
-            </div>
 
-            <div class="text-center">
-                <a href="check-in-portal.html" class="btn-get-started scrollto">Yes, Continue</a>
             </div>
-            <div class="text-center">
-                <a href="no-id.html" class="btn-get-started scrollto">I don't have one</a>
-            </div>
-            <div class="text-center">
-                <a href="qr-check-in.html" class="btn-get-started scrollto">Check in with QR</a>
-            </div>
+        </section><!-- End Breadcrumbs -->
 
-        </div>
-    </section><!-- End Hero -->
+        <section class="inner-page">
+            <div class="container">
+                <form>
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" for="storeID">Store ID:</label> 
+                      <div class="col-9">
+                        <input id="storeID" name="storeID" type="text" class="form-control" required="required">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="geohash" class="col-3 col-form-label">Geohash</label> 
+                      <div class="col-9">
+                        <input id="geohash" name="geohash" placeholder="r1f93ckmy1v" type="text" class="form-control">
+                      </div>
+                    </div> 
+                    <div class="form-group row">
+                      <div class="offset-3 col-9">
+                        <button name="submit" type="submit" class="btn btn-primary">Save Settings</button>
+                      </div>
+                    </div>
+                  </form>
+                
+            </div>
+            
+        </section>
+
+    </main><!-- End #main -->
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
