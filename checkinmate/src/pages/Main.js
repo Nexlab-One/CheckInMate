@@ -1,6 +1,7 @@
 import React from "react";
 
 function Main() {
+  localStorage.setItem("storeID", JSON.stringify("86kwbg"));
   return (
     <section id="hero" className="d-flex align-items-center">
       <div
@@ -26,7 +27,7 @@ function Main() {
           </a>
         </div>
         <div className="text-center">
-          <a href="/qrcode" className="btn-get-started scrollto">
+          <a href="/qrcode" className="btn btn-get-started scrollto">
             Check in with QR
           </a>
         </div>
