@@ -64,7 +64,7 @@ function Header() {
                 </ul>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#contact">
+                <a className="nav-link scrollto" href="/setting">
                   Settings
                 </a>
               </li>

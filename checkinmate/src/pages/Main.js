@@ -1,6 +1,7 @@
 import React from "react";
 
 function Main() {
+  localStorage.setItem("storeID", JSON.stringify("86kwbg"));
   return (
     <section id="hero" className="d-flex align-items-center">
       <div
