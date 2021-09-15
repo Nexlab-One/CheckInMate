@@ -136,6 +136,22 @@
             <!-- Template Main JS File -->
             <script src="assets/js/main.js"></script>
 
+            <!--Validate Phone Number-->
+            <script>
+               function phonenumber(inputtxt)
+               {
+                   var phoneno = /^\d{10}$/;
+                   if(inputtxt.value.match(phoneno))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        alert("Not a valid Phone Number");
+                        return false;
+                    }
+                } 
+            </script>          
 </body>
 
 </html>
