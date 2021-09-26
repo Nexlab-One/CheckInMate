@@ -14,7 +14,7 @@ function QRReader() {
         if (message === "Success") {
           setResult("block");
           setScanner("none");
-          // showHideSuccessQR();
+
           setTimeout(function () {
             setResult("none");
             setScanner("block");
