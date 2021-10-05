@@ -6,7 +6,7 @@
 
 CheckInMate is a web application designed for simplicity and ease of use, targeted at businesses needing an alternative system for their customers and workers to check in.
 
-The target audience is the general public who might have difficulty using current check in methods.
+The target audience is for the general public who might have difficulty using current check in methods.
 
 
 
