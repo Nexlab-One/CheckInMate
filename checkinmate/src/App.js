@@ -13,6 +13,7 @@ import NotExist from "./pages/NotExist";
 import QRReader from "./pages/QRReader";
 import Setting from "./pages/Setting";
 import ReportIssue from "./pages/ReportIssue";
+import TraceUserInfo from "./pages/TraceUserInfo";
 function App() {
   AOS.init({
     duration: 1000,
@@ -24,6 +25,7 @@ function App() {
     <>
       <Router>
         <Header />
+
         <Switch>
           <Route path="/" exact component={Main}></Route>
           <Route path="/register" component={Registration}></Route>
@@ -36,6 +38,7 @@ function App() {
           <Route path="/setting" component={Setting}></Route>
           <Route path="/reportissue" component={ReportIssue}></Route>
         </Switch>
+        <TraceUserInfo />
       </Router>
     </>
   );

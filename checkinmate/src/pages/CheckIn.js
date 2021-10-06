@@ -40,7 +40,7 @@ function CheckIn({ message = localStorage.getItem("id") }) {
               onChange={(e) => {
                 setContent(e.target.value);
               }}
-              style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}
+              style={{ width: "30%", marginLeft: "auto", marginRight: "auto" }}
             ></FormControl>
           </div>
           <br />
