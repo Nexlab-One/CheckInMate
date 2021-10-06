@@ -33,38 +33,45 @@ function UserDetails({ user = JSON.parse(localStorage.getItem("user")) }) {
                 <ul>
                   <li>
                     <strong>User ID</strong>:{" "}
-                    {user !== "undefined"
-                      ? "xxxx" + user.showID.toString().slice(-2)
-                      : "loading"}
+                    {user !== "undefined" ? user.showID : "loading"}
                   </li>
                   <li>
                     <strong>Name</strong>:{" "}
                     {user !== "undefined"
-                      ? user.lastName + ", " + user.firstName
+                      ? user.lastName.slice(0, 1) +
+                        "xx" +
+                        user.lastName.slice(-2) +
+                        ", " +
+                        user.firstName.slice(0, 1) +
+                        "xx" +
+                        user.firstName.slice(-2)
                       : "loading"}
                   </li>
                   <li>
                     <strong>Phone Number</strong>:{" "}
                     {user !== "undefined"
-                      ? "xxxx" + user.contact.toString().slice(-2)
+                      ? "xxxx" + user.contact.toString().slice(-4)
                       : "loading"}
                   </li>
                 </ul>
+                <div className="text-center">
+                  <a
+                    href="/checkin"
+                    className="btn btn-get-started scrollto"
+                    style={{ marginRight: "2vw" }}
+                  >
+                    No
+                  </a>
+
+                  <a
+                    href={`${user.error ? "/notExist" : "/checkinsuccess"}`}
+                    className="btn btn-get-started scrollto"
+                  >
+                    Yes, Continue
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="text-center">
-            <a
-              href={`${user.error ? "/notExist" : "/checkinsuccess"}`}
-              className="btn btn-get-started scrollto"
-            >
-              Yes, Continue
-            </a>
-          </div>
-          <div className="text-center">
-            <a href="/checkin" className="btn btn-get-started scrollto">
-              No
-            </a>
           </div>
         </div>
       </section>

@@ -73,7 +73,7 @@ function Registration() {
             </span>
           </div>
         </div>
-        <div className="form-group row">
+        {/* <div className="form-group row">
           <div className="col-3"></div>
           <div className="col-9">
             <div className="form-check form-check-inline">
@@ -91,7 +91,7 @@ function Registration() {
               Register an ID
             </span>
           </div>
-        </div>
+        </div> */}
         <div className="form-group row">
           <div className="offset-3 col-9">
             <button
