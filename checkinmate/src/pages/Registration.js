@@ -39,6 +39,7 @@ function Registration() {
             <span id="firstNameHelpBlock" className="form-text text-muted">
               Enter Your First Name
             </span>
+            <label id="firstNameLblError" style={{ color: "red" }}></label>
           </div>
         </div>
         <div className="form-group row">
@@ -55,6 +56,7 @@ function Registration() {
             <span id="lastNameHelpBlock" className="form-text text-muted">
               Enter Your Last Name
             </span>
+            <label id="lastNameLblError" style={{ color: "red" }}></label>
           </div>
         </div>
         <div className="form-group row">
@@ -71,6 +73,7 @@ function Registration() {
             <span id="phoneNumberHelpBlock" className="form-text text-muted">
               Enter your Primary Contact Phone Number
             </span>
+            <label id="numberLblError" style={{ color: "red" }}></label>
           </div>
         </div>
         {/* <div className="form-group row">
@@ -97,16 +100,50 @@ function Registration() {
             <button
               className="btn btn-primary"
               onClick={async () => {
-                localStorage.setItem(
-                  "id",
-                  await register(
-                    firstRef.current.value,
-                    lastRef.current.value,
-                    contactRef.current.value
-                  )
-                );
+                document.getElementById("numberLblError").innerHTML = "";
+                document.getElementById("lastNameLblError").innerHTML = "";
+                if (
+                  firstRef.current.value === "" ||
+                  firstRef.current.value === undefined
+                ) {
+                  firstRef.current.focus();
+                  document.getElementById("firstNameLblError").innerHTML =
+                    "Please Enter Your First Name";
+                } else {
+                  document.getElementById("firstNameLblError").innerHTML = "";
+                  if (
+                    lastRef.current.value === "" ||
+                    lastRef.current.value === undefined
+                  ) {
+                    document.getElementById("lastNameLblError").innerHTML =
+                      "Please Enter Your Last Name";
+                    lastRef.current.focus();
+                  } else {
+                    document.getElementById("lastNameLblError").innerHTML = "";
+                    if (
+                      contactRef.current.value === "" ||
+                      contactRef.current.value === undefined ||
+                      contactRef.current.value.length === 10 ||
+                      isNaN(contactRef.current.value)
+                    ) {
+                      document.getElementById("numberLblError").innerHTML =
+                        "Enter a valid phone number";
+                      contactRef.current.focus();
+                    } else {
+                      document.getElementById("numberLblError").innerHTML = "";
+                      localStorage.setItem(
+                        "id",
+                        await register(
+                          firstRef.current.value,
+                          lastRef.current.value,
+                          contactRef.current.value
+                        )
+                      );
 
-                window.open("/success");
+                      window.open("/success");
+                    }
+                  }
+                }
               }}
             >
               Check In
