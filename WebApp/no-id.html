@@ -86,22 +86,25 @@
                 <div class="form-group row">
                     <label for="firstName" class="col-3 col-form-label">First Name</label>
                     <div class="col-9">
-                        <input id="firstName" name="firstName" placeholder="John" type="text" class="form-control" aria-describedby="firstNameHelpBlock">
+                        <input id="firstName" name="firstName" placeholder="John" type="text" class="form-control" aria-describedby="firstNameHelpBlock" onblur="enableSubmit()">
                         <span id="firstNameHelpBlock" class="form-text text-muted">Enter Your First Name</span>
+                        <label id="firstNameLblError" style="color:red"></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-3 col-form-label" for="lastName">Last Name</label>
                     <div class="col-9">
-                        <input id="lastName" name="lastName" placeholder="Smith" type="text" class="form-control" aria-describedby="lastNameHelpBlock">
+                        <input id="lastName" name="lastName" placeholder="Smith" type="text" class="form-control" aria-describedby="lastNameHelpBlock" onblur="enableSubmit()">
                         <span id="lastNameHelpBlock" class="form-text text-muted">Enter Your Last Name</span>
+                        <label id="lastNameLblError" style="color:red"></label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="phoneNumber" class="col-3 col-form-label">Contact Number</label>
                     <div class="col-9">
-                        <input id="phoneNumber" name="phoneNumber" placeholder="04-xxxx-xxxx" type="text" class="form-control" aria-describedby="phoneNumberHelpBlock">
+                        <input id="phoneNumber" name="phoneNumber" placeholder="04-xxxx-xxxx" type="text" class="form-control" aria-describedby="phoneNumberHelpBlock" onblur="enableSubmit()">
                         <span id="phoneNumberHelpBlock" class="form-text text-muted">Enter your Primary Contact Phone Number</span>
+                        <label id="numberLblError" style="color:red"></label>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -116,7 +119,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="offset-3 col-9">
-                        <button name="submit" type="submit" class="btn btn-primary">Check In</button>
+                        <button id="submitButton" name="submit" type="submit" class="btn btn-primary" aria-disabled="true" disabled>Check In</button>
                     </div>
                 </div>
             </form>
@@ -138,19 +141,58 @@
 
             <!--Validate Phone Number-->
             <script>
-               function phonenumber(inputtxt)
-               {
-                   var phoneno = /^\d{10}$/;
-                   if(inputtxt.value.match(phoneno))
-                    {
-                        return true;
+                function enableSubmit() {
+                    let submitButton = document.getElementById("submitButton");
+                    submitButton.ariaDisabled = true;
+                    submitButton.disabled = true;
+                    if ((validateForm("firstName") == true) && (validateForm("lastName") == true) && (validateForm("phoneNumber") == true) ) {
+                        console.log("Button Enabled");
+                        submitButton.ariaDisabled = false;
+                        submitButton.disabled = false;
+                    } else {
+                        submitButton.ariaDisabled = true;
+                        console.log("Button Disabled");
                     }
-                    else
-                    {
-                        alert("Not a valid Phone Number");
-                        return false;
+                }
+
+                function validateForm(formToValidate) {
+                    console.log("Form Validation Triggered");
+                    let firstNameEntered = new Boolean(false);
+                    let lastNameEntered = new Boolean(false);
+                    let phoneNumberEntered = new Boolean(false);
+                    //enableSubmit(firstNameEntered, lastNameEntered, phoneNumberEntered);
+                    
+                    if (formToValidate == 'firstName') {
+                        var fName = document.getElementById("firstName").value;
+                        if (fName.length < 1 || (!/^[a-zA-Z]+$/.test(fName)) ) {
+                            document.getElementById("firstNameLblError").innerHTML = "Please Enter Your First Name";
+                        } else {
+                            document.getElementById("firstNameLblError").innerHTML = "";
+                            return true;
+                        }
                     }
-                } 
+
+                    if (formToValidate == 'lastName') {
+                        var lName = document.getElementById("lastName").value;
+                        if (lName.length < 1 || (!/^[a-zA-Z]+$/.test(lName)) ) {
+                            document.getElementById("lastNameLblError").innerHTML = "Please Enter Your Last Name";
+                        } else {
+                            document.getElementById("lastNameLblError").innerHTML = "";
+                            return true;
+                        }
+                    }
+                    
+                    if (formToValidate == 'phoneNumber') {
+                        var contactNumber = document.getElementById("phoneNumber").value;
+                        if (contactNumber.length != 10 || isNaN(contactNumber)) {
+                            document.getElementById("numberLblError").innerHTML = "Enter a valid phone number";
+                        } else {
+                            document.getElementById("numberLblError").innerHTML = "";
+                            return true;
+                        }
+                    }
+                    //enableSubmit();
+                }
             </script>          
 </body>
 
