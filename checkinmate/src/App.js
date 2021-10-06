@@ -14,6 +14,7 @@ import QRReader from "./pages/QRReader";
 import Setting from "./pages/Setting";
 import ReportIssue from "./pages/ReportIssue";
 import TraceUserInfo from "./pages/TraceUserInfo";
+import TraceStoreInfo from "./pages/TraceStoreInfo";
 function App() {
   AOS.init({
     duration: 1000,
@@ -38,7 +39,7 @@ function App() {
           <Route path="/setting" component={Setting}></Route>
           <Route path="/reportissue" component={ReportIssue}></Route>
         </Switch>
-        <TraceUserInfo />
+        <TraceStoreInfo />
       </Router>
     </>
   );
