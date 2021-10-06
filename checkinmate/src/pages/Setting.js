@@ -1,8 +1,11 @@
 import React from "react";
+import { registerStore } from "../services/store";
 
 function Setting() {
   const storeID = React.useRef();
   const postcode = React.useRef();
+  const [store, setStore] = React.useState(null);
+  const [postcodeID, setPostcode] = React.useState(null);
   return (
     <>
       <section className="breadcrumbs">
@@ -26,17 +29,17 @@ function Setting() {
               <div className="portfolio-info">
                 <h4>Current Details:</h4>
                 <ul>
-                  <strong>Store ID</strong>: xxxxxx
-                  <strong>Postcode</strong>: 0000
+                  <strong>Store ID</strong>: {store ? store : "xxxxxx"}
+                  <strong>Postcode</strong>: {postcodeID ? postcodeID : "0000"}
                 </ul>
               </div>
             </div>
           </div>
           <br />
-          <form align-items-center>
+          <div className="align-items-center">
             <div className="form-group row">
               <label className="col-3 col-form-label" for="storeID">
-                Store ID:
+                Store Name:
               </label>
               <div className="col-9">
                 <input
@@ -69,22 +72,30 @@ function Setting() {
             <div className="form-group row">
               <div className="offset-3 col-9">
                 <button
-                  name="submit"
-                  type="submit"
                   className="btn btn-primary"
-                  onClick={() => {
-                    localStorage.setItem(
-                      "storeID",
-                      JSON.stringify(storeID.current.value)
-                    );
-                    localStorage.setItem("postcode", postcode.current.value);
+                  onClick={async () => {
+                    if (
+                      storeID.current.value !== "" &&
+                      postcode.current.value !== ""
+                    ) {
+                      const id = await registerStore(
+                        storeID.current.value,
+                        postcode.current.value
+                      );
+                      console.log("id: " + id);
+                      setStore(id);
+                      localStorage.setItem("storeID", JSON.stringify(id));
+                      localStorage.setItem("postcode", postcode.current.value);
+                      setPostcode(postcode.current.value);
+                      // window.location.href = "/";
+                    }
                   }}
                 >
                   Save Settings
                 </button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </>

@@ -123,7 +123,6 @@ function Registration() {
                     if (
                       contactRef.current.value === "" ||
                       contactRef.current.value === undefined ||
-                      contactRef.current.value.length === 10 ||
                       isNaN(contactRef.current.value)
                     ) {
                       document.getElementById("numberLblError").innerHTML =

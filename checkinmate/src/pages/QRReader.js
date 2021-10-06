@@ -7,7 +7,8 @@ function QRReader() {
   const [scanner, setScanner] = React.useState("block");
   const handleScan = async (data) => {
     if (data) {
-      const storeID = localStorage.getItem("storeID");
+      // const storeID = localStorage.getItem("storeID");
+      const storeID = "3t9yd";
       if (storeID !== "undefined" && storeID !== "") {
         const message = await checkin(data, storeID);
         console.log(message);
@@ -18,7 +19,7 @@ function QRReader() {
           setTimeout(function () {
             setResult("none");
             setScanner("block");
-          }, 2000);
+          }, 3000);
         }
       }
     }
