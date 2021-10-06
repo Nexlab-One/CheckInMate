@@ -1,4 +1,5 @@
 import React from "react";
+import { registerStore } from "../services/store";
 
 function Setting() {
   const storeID = React.useRef();
@@ -33,10 +34,10 @@ function Setting() {
             </div>
           </div>
           <br />
-          <form align-items-center>
+          <div className="align-items-center">
             <div className="form-group row">
               <label className="col-3 col-form-label" for="storeID">
-                Store ID:
+                Store Name:
               </label>
               <div className="col-9">
                 <input
@@ -69,22 +70,30 @@ function Setting() {
             <div className="form-group row">
               <div className="offset-3 col-9">
                 <button
-                  name="submit"
-                  type="submit"
                   className="btn btn-primary"
                   onClick={() => {
-                    localStorage.setItem(
-                      "storeID",
-                      JSON.stringify(storeID.current.value)
-                    );
-                    localStorage.setItem("postcode", postcode.current.value);
+                    if (
+                      storeID.current.value !== "" &&
+                      postcode.current.value !== ""
+                    ) {
+                      localStorage.setItem(
+                        "storeID",
+                        JSON.stringify(
+                          registerStore(
+                            storeID.current.value,
+                            postcode.current.value
+                          )
+                        )
+                      );
+                      localStorage.setItem("postcode", postcode.current.value);
+                    }
                   }}
                 >
                   Save Settings
                 </button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </section>
     </>
