@@ -39,6 +39,8 @@ function App() {
           <Route path="/setting" component={Setting}></Route>
           <Route path="/reportissue" component={ReportIssue}></Route>
         </Switch>
+        <TraceStoreInfo></TraceStoreInfo>
+        <TraceUserInfo></TraceUserInfo>
       </Router>
     </>
   );
