@@ -124,6 +124,14 @@ function generateID() {
   });
 }
 
+//find the user in that time in store
+app.put("/findUserInStore", async function (req, res) {
+  let info = await CheckIn.find({ storeID: req.body.storeID });
+  console.log(info);
+
+  res.send(info);
+});
+
 //create the server in http://localhost:5000
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
