@@ -48,17 +48,24 @@ function CheckIn({ message = localStorage.getItem("id") }) {
             <button
               className="btn btn-primary"
               onClick={async () => {
-                const user = await findUser(showID.current.value);
-                if (user !== "") {
-                  localStorage.setItem("user", JSON.stringify(user));
-                  window.open("/userDetail");
+                if (
+                  showID.current.value !== undefined &&
+                  showID.current.value !== ""
+                ) {
+                  const user = await findUser(showID.current.value);
+                  if (user !== "") {
+                    localStorage.setItem("user", JSON.stringify(user));
+                    window.open("/userDetail");
 
-                  if (user.error) {
-                    localStorage.setItem(
-                      "error",
-                      `This user ID ${showID.current.value} does nor exist`
-                    );
+                    if (user.error) {
+                      localStorage.setItem(
+                        "error",
+                        `This user ID ${showID.current.value} does nor exist`
+                      );
+                    }
                   }
+                } else {
+                  showID.current.focus();
                 }
               }}
             >
