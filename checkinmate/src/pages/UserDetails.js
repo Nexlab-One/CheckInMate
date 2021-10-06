@@ -33,7 +33,9 @@ function UserDetails({ user = JSON.parse(localStorage.getItem("user")) }) {
                 <ul>
                   <li>
                     <strong>User ID</strong>:{" "}
-                    {user !== "undefined" ? user.showID : "loading"}
+                    {user !== "undefined"
+                      ? "xxxx" + user.showID.toString().slice(-2)
+                      : "loading"}
                   </li>
                   <li>
                     <strong>Name</strong>:{" "}
@@ -43,7 +45,9 @@ function UserDetails({ user = JSON.parse(localStorage.getItem("user")) }) {
                   </li>
                   <li>
                     <strong>Phone Number</strong>:{" "}
-                    {user !== "undefined" ? user.contact : "loading"}
+                    {user !== "undefined"
+                      ? "xxxx" + user.contact.toString().slice(-2)
+                      : "loading"}
                   </li>
                 </ul>
               </div>

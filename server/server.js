@@ -91,7 +91,8 @@ app.post("/register", async function (req, res) {
 
 app.put("/findUser", async (req, res) => {
   let user = await User.findOne({ showID: req.body.showID });
-  if (!user)
+  console.log(user);
+  if (!user) {
     user = {
       firstName: "Error, This Does Not Exist",
       lastName: "Error, This Does Not Exist",
@@ -99,6 +100,8 @@ app.put("/findUser", async (req, res) => {
       showID: "Error, This Does Not Exist",
       error: true,
     };
+  }
+  console.log(user);
   res.send(user);
 });
 
