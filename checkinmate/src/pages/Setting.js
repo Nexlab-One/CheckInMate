@@ -4,6 +4,8 @@ import { registerStore } from "../services/store";
 function Setting() {
   const storeID = React.useRef();
   const postcode = React.useRef();
+  const [store, setStore] = React.useState(null);
+  const [postcodeID, setPostcode] = React.useState(null);
   return (
     <>
       <section className="breadcrumbs">
@@ -27,8 +29,8 @@ function Setting() {
               <div className="portfolio-info">
                 <h4>Current Details:</h4>
                 <ul>
-                  <strong>Store ID</strong>: xxxxxx
-                  <strong>Postcode</strong>: 0000
+                  <strong>Store ID</strong>: {store ? store : "xxxxxx"}
+                  <strong>Postcode</strong>: {postcodeID ? postcodeID : "0000"}
                 </ul>
               </div>
             </div>
@@ -71,21 +73,21 @@ function Setting() {
               <div className="offset-3 col-9">
                 <button
                   className="btn btn-primary"
-                  onClick={() => {
+                  onClick={async () => {
                     if (
                       storeID.current.value !== "" &&
                       postcode.current.value !== ""
                     ) {
-                      localStorage.setItem(
-                        "storeID",
-                        JSON.stringify(
-                          registerStore(
-                            storeID.current.value,
-                            postcode.current.value
-                          )
-                        )
+                      const id = await registerStore(
+                        storeID.current.value,
+                        postcode.current.value
                       );
+                      console.log("id: " + id);
+                      setStore(id);
+                      localStorage.setItem("storeID", JSON.stringify(id));
                       localStorage.setItem("postcode", postcode.current.value);
+                      setPostcode(postcode.current.value);
+                      // window.location.href = "/";
                     }
                   }}
                 >

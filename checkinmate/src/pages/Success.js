@@ -13,7 +13,9 @@ function Success({ message = localStorage.getItem("id") }) {
       >
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-9 text-center">
-            <h1>Your ID is {message !== "undefined" ? message : "loading"}</h1>
+            <h1>You Have Checked in Successfully</h1>
+            <h2>Your ID Has been Registered and is:</h2>
+            <h1> {message !== "undefined" ? message : "loading"}</h1>
           </div>
         </div>
       </div>

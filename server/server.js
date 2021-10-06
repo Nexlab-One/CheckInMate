@@ -59,12 +59,12 @@ app.put("/checkinlocation", async function (req, res) {
   try {
     const store = await Store.findOne({ storeID: req.body.storeID });
     if (!store) {
-      res.status(400).send("Store doesn't exist");
+      return res.status(400).send("Store doesn't exist");
     }
     const user = await User.findOne({ showID: req.body.userID });
 
     if (!user) {
-      res.status(400).send("User doesn't exist");
+      return res.status(400).send("User doesn't exist");
     }
   } catch (error) {
     console.log(error);
