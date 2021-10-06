@@ -26,8 +26,12 @@ function CheckIn({ message = localStorage.getItem("id") }) {
 
       <section className="inner-page">
         <div className="container">
-          <div className="form-group">
-            <label>User ID</label>
+          <div className="form-group text-center justify-content-center">
+            <label style={{ fontSize: "5vh" }}>User ID</label>
+
+            <br />
+
+            <br />
 
             <FormControl
               ref={showID}
@@ -36,24 +40,32 @@ function CheckIn({ message = localStorage.getItem("id") }) {
               onChange={(e) => {
                 setContent(e.target.value);
               }}
+              style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}
             ></FormControl>
           </div>
           <br />
-          <div className="form-group">
+          <div className="form-group text-center">
             <button
               className="btn btn-primary"
               onClick={async () => {
-                const user = await findUser(showID.current.value);
-                if (user !== "") {
-                  localStorage.setItem("user", JSON.stringify(user));
-                  window.open("/userDetail");
+                if (
+                  showID.current.value !== undefined &&
+                  showID.current.value !== ""
+                ) {
+                  const user = await findUser(showID.current.value);
+                  if (user !== "") {
+                    localStorage.setItem("user", JSON.stringify(user));
+                    window.open("/userDetail");
 
-                  if (user.error) {
-                    localStorage.setItem(
-                      "error",
-                      `This user ID ${showID.current.value} does nor exist`
-                    );
+                    if (user.error) {
+                      localStorage.setItem(
+                        "error",
+                        `This user ID ${showID.current.value} does nor exist`
+                      );
+                    }
                   }
+                } else {
+                  showID.current.focus();
                 }
               }}
             >

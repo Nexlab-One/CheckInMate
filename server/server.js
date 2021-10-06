@@ -127,8 +127,12 @@ function generateID() {
 //find the user in that time in store
 app.put("/findUserInStore", async function (req, res) {
   let info = await CheckIn.find({ storeID: req.body.storeID });
-  console.log(info);
 
+  res.send(info);
+});
+
+app.put("/findUserPassLocation", async function (req, res) {
+  let info = await CheckIn.find({ userID: req.body.userID });
   res.send(info);
 });
 
